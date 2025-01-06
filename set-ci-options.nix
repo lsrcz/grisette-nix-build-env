@@ -1,6 +1,9 @@
-{ pkgs, ghcVersion, hfinal, shouldReportTix, extraTestToolDepends, ci, package }:
+{ pkgs, ghcVersion, hfinal, extraTestToolDepends, ci, package }:
+let
+  versions = import ./hpkgs-versions.nix;
+in
 (pkgs.haskell.lib.overrideCabal package (drv: {
-  testToolDepends = extraTestToolDepends ++ (drv.testToolDepends or []);
+  testToolDepends = extraTestToolDepends ++ (drv.testToolDepends or [ ]);
 } // (if ci then {
   configureFlags = [
     "--flags=-optimize"
@@ -10,7 +13,7 @@
   postCheck = ''
     mkdir -p $out/test-report
     cp test-report.xml $out/test-report/test-report.xml
-  '' + (if shouldReportTix then ''
+  '' + (if ghcVersion == versions.developmentVersion then ''
     mkdir -p $out/mix
     cp dist/ $out/dist -r
     cp dist/build/extra-compilation-artifacts/hpc/vanilla/mix/* $out/mix -r

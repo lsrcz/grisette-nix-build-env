@@ -1,3 +1,5 @@
+let hpkgsVersions = import ./hpkgs-versions.nix;
+in
 {
   overlays = {
     z3 = import ./z3-overlay.nix;
@@ -6,8 +8,8 @@
   };
   patchedHaskellPackages = import ./hpkgs.nix;
   haskellPackagesExtendHelpers = import ./hpkgs-extend-helpers.nix;
-
   devShell = import ./dev-shells.nix;
-
   setCIOptions = import ./set-ci-options.nix;
+  developmentGhcVersion = hpkgsVersions.developmentGhcVersion;
+  supportedGhcVersions = hpkgsVersions.supportedGhcVersions;
 }
