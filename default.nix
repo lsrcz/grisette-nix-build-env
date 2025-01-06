@@ -12,4 +12,5 @@ in
   setCIOptions = import ./set-ci-options.nix;
   developmentGhcVersion = hpkgsVersions.developmentGhcVersion;
   supportedGhcVersions = hpkgsVersions.supportedGhcVersions;
+  defaultOutputs = import ./default-outputs.nix;
 }
