@@ -13,7 +13,7 @@ in
   postCheck = ''
     mkdir -p $out/test-report
     cp test-report.xml $out/test-report/test-report.xml
-  '' + (if ghcVersion == versions.developmentVersion then ''
+  '' + (if ghcVersion == versions.developmentGhcVersion then ''
     mkdir -p $out/mix
     cp dist/ $out/dist -r
     cp dist/build/extra-compilation-artifacts/hpc/vanilla/mix/* $out/mix -r
