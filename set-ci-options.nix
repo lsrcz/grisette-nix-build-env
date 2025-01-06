@@ -1,6 +1,8 @@
-{ pkgs, ghcVersion, hfinal, extraTestToolDepends, ci, package }:
+{ pkgs, ghcVersion, hfinal, extraTestToolDepends, ci, package, mixDirs }:
 let
   versions = import ./hpkgs-versions.nix;
+  copyMix = mixDir: "cp dist/build/${mixDir}/extra-compilation-artifacts/hpc/vanilla/mix/* $out/mix -r";
+  copyAllMix = pkgs.lib.concatMapStringsSep "\n" copyMix mixDirs;
 in
 (pkgs.haskell.lib.overrideCabal package (drv: {
   testToolDepends = extraTestToolDepends ++ (drv.testToolDepends or [ ]);
@@ -16,9 +18,7 @@ in
   '' + (if ghcVersion == versions.developmentGhcVersion then ''
     mkdir -p $out/mix
     cp dist/ $out/dist -r
-    cp dist/build/extra-compilation-artifacts/hpc/vanilla/mix/* $out/mix -r
-    cp dist/build/spec/spec-tmp/extra-compilation-artifacts/hpc/vanilla/mix/* $out/mix -r
-    cp dist/build/doctest/doctest-tmp/extra-compilation-artifacts/hpc/vanilla/mix/* $out/mix -r
+    ${copyAllMix}
     mkdir -p $out/tix
     find dist/hpc/vanilla/tix -name '*.tix' | xargs -I {} cp {} $out/tix -r
   '' else "");
