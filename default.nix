@@ -8,4 +8,6 @@
   haskellPackagesExtendHelpers = import ./hpkgs-extend-helpers.nix;
 
   devShell = import ./dev-shells.nix;
+
+  setCIOptions = import ./set-ci-options.nix;
 }
