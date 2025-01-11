@@ -1,4 +1,5 @@
-{ pkgs, ghcVersion }: pkgs.haskell.packages."ghc${ghcVersion}".override (prev: {
+{ pkgs, ghcVersion }:
+pkgs.haskell.packages."ghc${ghcVersion}".override (prev: {
   all-cabal-hashes = pkgs.fetchFromGitHub {
     owner = "commercialhaskell";
     repo = "all-cabal-hashes";

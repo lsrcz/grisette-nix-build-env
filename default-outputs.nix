@@ -1,13 +1,16 @@
-{ pkgs, devShellWithVersion, haskellPackagesWithCiFlags, packageName }:
+{
+  pkgs,
+  devShellWithVersion,
+  haskellPackagesWithCiFlags,
+  packageName,
+}:
 let
   hpkgsVersions = import ./hpkgs-versions.nix;
 in
-pkgs.lib.foldl'
-  (acc: ghcVersion:
-  pkgs.lib.recursiveUpdate acc
-  {
-    devShells.${ghcVersion} =
-      devShellWithVersion { ghcVersion = ghcVersion; };
+pkgs.lib.foldl' (
+  acc: ghcVersion:
+  pkgs.lib.recursiveUpdate acc {
+    devShells.${ghcVersion} = devShellWithVersion { ghcVersion = ghcVersion; };
     packages.${packageName} = {
       "${ghcVersion}" =
         (haskellPackagesWithCiFlags {
@@ -20,6 +23,5 @@ pkgs.lib.foldl'
           ci = true;
         }).${packageName};
     };
-  })
-{ }
-  hpkgsVersions.supportedGhcVersions
+  }
+) { } hpkgsVersions.supportedGhcVersions

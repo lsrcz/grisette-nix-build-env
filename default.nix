@@ -1,4 +1,6 @@
-let hpkgsVersions = import ./hpkgs-versions.nix;
+{ default-treefmt-nix, default-pre-commit-hooks }:
+let
+  hpkgsVersions = import ./hpkgs-versions.nix;
 in
 {
   overlays = {
@@ -13,4 +15,10 @@ in
   developmentGhcVersion = hpkgsVersions.developmentGhcVersion;
   supportedGhcVersions = hpkgsVersions.supportedGhcVersions;
   defaultOutputs = import ./default-outputs.nix;
+  treefmt = import ./treefmt.nix {
+    inherit default-treefmt-nix;
+  };
+  pre-commit-check = import ./hook.nix {
+    inherit default-pre-commit-hooks;
+  };
 }
