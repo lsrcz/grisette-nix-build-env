@@ -34,7 +34,7 @@ let
     { ghcVersion, ci }:
     (basicHaskellPackages ghcVersion).extend (
       hfinal: hprev:
-      extraHaskellPackages pkgs hfinal
+      extraHaskellPackages pkgs ghcVersion hfinal
         (import ./hpkgs-extend-helpers.nix {
           inherit
             pkgs
