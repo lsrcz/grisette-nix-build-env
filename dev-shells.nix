@@ -29,6 +29,7 @@ let
   hlsBuildInputs = with haskellPackages; [
     hlint # Haskell codestyle checker
     haskell-language-server # LSP server for editor
+    pkgs.nil
   ];
   devTools =
     basicBuildInputs ++ (if isDevelopmentEnvironment then hlsBuildInputs else [ ]) ++ extraBuildInputs;

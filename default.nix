@@ -21,4 +21,5 @@ in
   pre-commit-check = import ./hook.nix {
     inherit default-pre-commit-hooks;
   };
+  output = import ./env.nix;
 }
