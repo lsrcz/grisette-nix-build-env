@@ -49,6 +49,7 @@ treefmt-nix.lib.mkWrapper pkgs {
     "LICENSE"
     "*.lock"
     "**/*.cabal"
+    "*.cabal"
     "cabal.project"
     ".gitignore"
   ];
