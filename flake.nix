@@ -45,6 +45,9 @@
         };
         devShell = pkgs.mkShell {
           shellHook = pre-commit-check.shellHook;
+          buildInputs = with pkgs; [
+            nil
+          ];
         };
       }
     );

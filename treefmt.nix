@@ -14,7 +14,6 @@ treefmt-nix.lib.mkWrapper pkgs {
       ghcVersion = "9101";
     }).ormolu;
   programs.yamlfmt.enable = true;
-  programs.cabal-fmt.enable = true;
   programs.mdformat.enable = true;
   programs.mdformat.package = pkgs.mdformat.withPlugins (
     ps: with ps; [
@@ -49,6 +48,7 @@ treefmt-nix.lib.mkWrapper pkgs {
   settings.excludes = excludes ++ [
     "LICENSE"
     "*.lock"
+    "**/*.cabal"
     "cabal.project"
     ".gitignore"
   ];
