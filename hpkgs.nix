@@ -6,6 +6,6 @@
   "948" = import ./hpkgs-948.nix { inherit pkgs; };
   "966" = import ./hpkgs-966.nix { inherit pkgs; };
   "984" = import ./hpkgs-984.nix { inherit pkgs; };
-  "9101" = import ./hpkgs-9101.nix { inherit pkgs; };
-  "9121" = import ./hpkgs-9121.nix { inherit pkgs; };
+  "9102" = import ./hpkgs-9102.nix { inherit pkgs; };
+  "9122" = import ./hpkgs-9122.nix { inherit pkgs; };
 })."${ghcVersion}"

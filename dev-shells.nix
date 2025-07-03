@@ -18,7 +18,7 @@ let
         "
     '';
   };
-  stableHPkgs = pkgs.haskell.packages."ghc9101";
+  stableHPkgs = pkgs.haskell.packages."ghc9102";
   basicBuildInputs = with haskellPackages; [
     ghc # GHC compiler in the desired version (will be available on PATH)
     stack-wrapped

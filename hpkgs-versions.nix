@@ -1,5 +1,5 @@
 {
-  developmentGhcVersion = "9101";
+  developmentGhcVersion = "9102";
   supportedGhcVersions = [
     "8107"
     "902"
@@ -7,7 +7,7 @@
     "948"
     "966"
     "984"
-    "9101"
-    "9121"
+    "9102"
+    "9122"
   ];
 }

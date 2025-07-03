@@ -11,7 +11,7 @@ treefmt-nix.lib.mkWrapper pkgs {
   programs.ormolu.package =
     (import ./hpkgs-base.nix {
       inherit pkgs;
-      ghcVersion = "9101";
+      ghcVersion = "9102";
     }).ormolu;
   programs.yamlfmt.enable = true;
   programs.mdformat.enable = true;
